@@ -1,0 +1,17 @@
+{
+  "name": "ex2",
+  "version": "1.0.0",
+  "description": "Web API that sends and recieves registration data",
+  "main": "main.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node main.js"
+  },
+  "author": "Andrew Avinante",
+  "license": "ISC"
+}

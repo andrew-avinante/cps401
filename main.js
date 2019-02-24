@@ -65,7 +65,7 @@ app.post('/registrations', function (req, res) {
     }
 });
 
-let port = 3000;
+let port = 22;
 app.listen(port, function () {
     console.log('Express server listening on port ' + port);
 });

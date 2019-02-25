@@ -30,10 +30,9 @@ app.get('/registrations', function (req, res) {
 });
 
 app.post('/registrations', function (req, res) {
-    console.log(req);
     if(req.body.firstName != undefined && req.body.lastName != undefined && req.body.grade != undefined && req.body.email != undefined && req.body.shirtSize != undefined && req.body.hrUsername != undefined)
     {
-        if(req.body.shirtSize != "S" && req.body.shirtSize != "M" && req.body.shirtSize != "L")
+        if(req.body.shirtSize.toUpperCase() != "S" && req.body.shirtSize.toUpperCase() != "M" && req.body.shirtSize.toUpperCase() != "L")
         {
             res.status(400);
             res.send("Problem: Invalid shirtSize " + req.body.shirtSize);
@@ -51,7 +50,12 @@ app.post('/registrations', function (req, res) {
                 res.send("Problem: " + err);
                 return;
             }
-                connection.query("insert into registration(first_name, last_name, grade,email,shirtsize,hrusername) values('" + req.body.firstName + "', '" + req.body.lastName + "', " + parseInt(req.body.grade) + ", '" + req.body.email + "', '" + req.body.shirtSize + "', '" + req.body.usernames + "')", function (err, results) {
+                connection.query("insert into registration(first_name, last_name, grade,email,shirtsize,hrusername) values('" + req.body.firstName + "', '" + req.body.lastName + "', " + parseInt(req.body.grade) + ", '" + req.body.email + "', '" + req.body.shirtSize + "', '" + req.body.hrUsername + "')", function (err, results) {
+                    if (err) {
+                        res.status(500);
+                        res.send("Problem: " + err);
+                        return;
+                    }
                 res.status(200);
                 res.send(results);
                 connection.release();  // release connection

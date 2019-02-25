@@ -16,20 +16,6 @@ let bodyParser = require("body-parser");
 let app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.get('/', function (req, res) {
-    // pool.getConnection(function(err, connection) {
-    //     if (err) {
-    //         res.send("Problem: " + err);
-    //         return;
-    //     }
-    //     connection.query("SELECT * FROM registration", function (err, results) {
-    //         res.send(results);
-    //         connection.release();  // release connection
-    //     });
-    // });
-    res.send("HI");
-});
-
 app.get('/registrations', function (req, res) {
     pool.getConnection(function(err, connection) {
         if (err) {

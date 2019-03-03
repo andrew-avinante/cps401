@@ -1,0 +1,50 @@
+body
+{
+    background: black;
+    margin: 0;
+    padding: 0;
+}
+
+.banner
+{
+    display: block;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mainContainer
+{
+    color: white;
+    font-family: sans-serif;
+    display: block;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    width: 50vw;
+}
+
+.indent
+{
+    line-height: 40px;
+    margin-left: 30px;
+}
+
+.leftCol
+{
+    text-align: right;
+    width: 50px;
+}
+
+.essay
+{
+    height: 150px;
+    width: 500px;
+}
+
+.addtocart
+{
+    display: inline-block;
+}

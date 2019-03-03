@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wally's Wall of Wisdom</title>
+    <link rel="stylesheet" type="text/css" href="main.css?v=0.0">
+    <link rel="stylesheet" type="text/css" href="navBar.css?v=0.0">
+    </head>
+  <body>
+    <img class='banner' src='pic1.jpg'>
+    <div class='mainContainer'>
+        <form action='previewpost.html' class='mainForm' method='get'>
+        <table class='formTbl'>
+            <tr>
+            <td class='leftCol'>
+                Your name:
+            </td>
+            <td>
+                <input name='name' type='text'>
+            </td>
+            </tr>
+    
+            <tr>
+            <td class='leftCol'>
+                Email:
+            </td>
+            <td>
+                <input name='email' type='text'>
+            </td>
+            </tr>
+    
+            <tr>
+            <td class='leftCol'>
+                <input name='address' type='checkbox' checked>
+            </td>
+            <td>
+                Display address
+            </td>
+            </tr>
+    
+            <tr>
+            <td class='leftCol'>
+                Classification:
+            </td>
+            <td>
+                <input name='class' type='radio' value='Freshman'> Freshman <input name='class' type='radio' value='Sophomore'> Sophomore <input name='class' type='radio' value='Junior' checked> Junior <input name='class' type='radio' value='Senior'> Senior
+            </td>
+            </tr>
+    
+            <tr>
+            <td class='leftCol'>
+                Your words of wisdom:
+            </td>
+            <td>
+                <textarea class='essay' name='wisdom'></textarea>
+            </td>
+            </tr>
+    
+            <tr>
+            <td class='leftCol'>
+                Category:
+            </td>
+            <td>
+                <select name='category'>
+                <option value='LOVE'>
+                    Love
+                </option>
+                <option value='CS'>
+                    Computer Support
+                </option>
+                <option value='DL'>
+                    Dorm Life
+                </option>
+                <option value='FAM'>
+                    Family
+                </option>
+                <option value='FOOD'>
+                    Food
+                </option>
+                </select>
+            </td>
+            </tr>
+    
+            <tr>
+            <td>
+            </td>
+            <td>
+                <input type="submit" value='Continue'> <input onclick="location='index.html'" type="button" value='Cancel'>
+            </td>
+            </tr>
+        </table>
+        </form>
+    </div>
+  </body>
+</html>

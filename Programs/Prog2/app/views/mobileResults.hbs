@@ -1,0 +1,35 @@
+<div class="content" data-role="content">
+    <ul data-role="listview">
+        {{#each details}}
+            <li><a href="#b{{id}}">{{title}}</a></li>
+            {{/each}}
+    </ul>
+  </div>
+  
+  <footer data-role="footer">
+    {{#if prevBtn}}
+     <a data-icon="arrow-l" data-role="button" href="mobile_searchresult?txtTitle={{title}}&start={{prevPageIdx}}" data-ajax="false">prev</a>
+     {{/if}}
+      {{#if nextBtn}}
+     <a data-icon="arrow-r" data-role="button" href="mobile_searchresult?txtTitle={{title}}&start={{nextPageIdx}}" data-ajax="false">next</a>
+        {{/if}}
+  </footer>
+</section>
+
+
+
+ {{#each details}}
+
+<section id="b{{id}}" data-role="page">
+  <header data-role="header">
+    <h1>Details</h1>
+  </header>
+  <div class="content" >
+    <table>
+      <tr><th>Call #:</th><td>{{callNo}}</td></tr>
+      <tr><th>Title:</th><td>{{title}}</td></tr>
+      <tr><th>Author:</th><td>{{author}}</td>
+     </table>
+  </div>
+</section>
+{{/each}}

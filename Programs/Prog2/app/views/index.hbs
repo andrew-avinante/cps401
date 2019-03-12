@@ -1,0 +1,29 @@
+<form method="get" action="search" >
+
+      <P>Search by Title:
+        <input name="txtTitle" type="text" value=""  />&nbsp;<input type="submit" name="btnSearch" value="Search" />&nbsp;
+      </P>
+        {{error}}
+      <P><a href="search?txtTitle={{title}}&start={{prevPageIdx}}">{{prevBtn}}</a> {{resultsIndicator}} <a href="search?txtTitle={{title}}&start={{nextPageIdx}}">{{nextBtn}}</a></P>
+
+      <P><table id="tblResults" cellspacing="0" cellpadding="5" align="Left" bordercolor="Gray" border="0">
+	<tr>
+		<td align="Left" valign="Top" width="25%"><b>Author</b></td><td align="Left" valign="Top" width="75%"><b>Title</b></td>
+	</tr>
+
+    {{#each details}}
+    <tr>
+        <td align="Left" valign="Top">{{author}}</td>
+        <td align="Left" valign="Top"><a href='details?txtId={{id}}' alt=''>{{title}}</a></td>
+    </tr>
+    {{/each}}
+
+</table>
+      <br>
+      <br>
+      <P>&nbsp;</P>
+      <P>&nbsp;</P>
+
+      <P>&nbsp;</P>
+      <P>&nbsp;</P>
+    </form>

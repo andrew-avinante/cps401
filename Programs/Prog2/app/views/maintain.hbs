@@ -1,0 +1,43 @@
+<form method="post">
+    <table cellSpacing="5" cellPadding="5" width="100%" align="left">
+    <tr>
+        <td vAlign="top" align="right" width="200"><b>Title:</b></td>
+        <td vAlign="top"><textarea name="txtTitle" >{{title}}</textarea></td>
+    </tr>
+    <tr>
+        <td vAlign="top" align="right"><b>Author:</b></td>
+
+        <td vAlign="top"><input name="txtAuthor" type="text" value="{{author}}"  /></td>
+    </tr>
+    <tr>
+        <td vAlign="top" align="right"><b>Additional Author:</b></td>
+        <td vAlign="top"><input name="txtAddAuthor" type="text" value="{{addAuthor}}" /></td>
+    </tr>
+    <tr>
+        <td vAlign="top" align="right"><b>Call Number:</b></td>
+
+        <td vAlign="top"><input name="txtCallNo" type="text" value="{{callNo}}" /></td>
+    </tr>
+    <tr>
+        <td vAlign="top" align="right"><b>Publication Info:</b></td>
+        <td vAlign="top"><textarea name="txtPubInfo" >{{pubInfo}}</textarea></td>
+    </tr>
+    <tr>
+        <td style="HEIGHT: 57px" vAlign="top" align="right"><b>Description:</b></td>
+
+        <td vAlign="top"><textarea name="txtDesc" >{{descript}}</textarea></td>
+    </tr>
+    <tr>
+        <td vAlign="top" align="right"><b>Series:</b></td>
+        <td vAlign="top"><input name="txtSeries" type="text" id="tbSeries" value="{{series}}" /></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <input type = 'hidden' name = 'txtId' value = '{{id}}'/>
+        <input type = 'hidden' name = 'txtUpdateCount' value = '{{updateCount}}'/>
+        {{error}}
+        <td align="left"><input type="submit" name="btnSave" value="Save"  />&nbsp;
+        <input type="submit" name="btnCancel" value="Cancel"  /></td>
+    </tr>
+    </table>
+</form>

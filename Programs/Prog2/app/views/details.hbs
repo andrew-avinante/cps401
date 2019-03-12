@@ -1,0 +1,49 @@
+<form method="get" action="maintain">
+    <table cellpadding="5" cellspacing="5" align="center" width="100%">
+        <tr>
+            <td valign="top" align="right" width="200"><b>Title:</b></td>
+            <td valign="top">{{title}}</td>
+        </tr>
+
+        <tr>
+            <td valign="top" align="right"><b>Author:</b></td>
+            <td valign="top">{{author}}</td>
+        </tr>
+        <tr>
+            <td valign="top" align="right"><b>Additional Author:</b></td>
+            <td valign="top">{{addAuthor}}</td>
+
+        </tr>
+        <tr>
+            <td valign="top" align="right"><b>Call Number:</b></td>
+            <td valign="top">{{callNo}}</td>
+        </tr>
+        <tr>
+            <td valign="top" align="right"><b>Publication Info:</b></td>
+
+            <td valign="top">{{pubInfo}}</td>
+        </tr>
+        <tr>
+            <td valign="top" align="right"><b>Description:</b></td>
+            <td valign="top">{{descript}}</td>
+        </tr>
+        <tr>
+            <td valign="top" align="right"><b>Series:</b></td>
+            <td valign="top">{{series}}</td>
+        </tr>
+        <tr>
+            <td align="right" valign="top"><b>Subject Categories:</b></td>
+            <td valign="top">
+                {{#each subjectCat}}
+                    {{subject}}<br/>
+                {{/each}}</td>
+        </tr>
+
+        </table>
+    <P>&nbsp;</P>
+    <P>
+    <input type = 'hidden' name = 'txtId' value="{{id}}"/>
+    {{#if loggedIn}}
+        <input type="submit" name="btnMaintain" value="Maintenance" /></P>
+    {{/if}}
+</form>

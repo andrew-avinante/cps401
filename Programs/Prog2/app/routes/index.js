@@ -60,7 +60,7 @@ router.post('/login', function (req, res, next) {
     Users.search(req.body.txtUsername, function (err, data)
     {
         console.log(authPass(req.body.txtPassword));
-        if(!err && authPass(req.body.txtPassword) === data.password)
+        if(!err && authPass(req.body.txtPassword) == data.password)
         {
             if (!auth)
             {

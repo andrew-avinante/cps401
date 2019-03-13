@@ -66,6 +66,7 @@ Item.search = function (lst, callback) {
 
 Item.update = function(item, callback)
 {
+    console.log(item.id);
     if(!item.callNo || !item.title || !item.author)
     {
         callback(`${!item.id ? "Call number" : !item.title ? "Title" : "Author"} is NULL!`, null);
@@ -73,7 +74,8 @@ Item.update = function(item, callback)
     }
     db.pool.getConnection(function (err, connection) {
         connection.query(`update ITEMS set CALLNO = '${item.callNo}', AUTHOR = '${item.author}', TITLE = '${item.title}', PUB_INFO = '${item.pubInfo}', DESCRIPT = '${item.descript}', SERIES = '${item.series}', ADD_AUTHOR = '${item.addAuthor}', UPDATE_COUNT = ${item.updateCount} + 1 WHERE ID = ${item.id} AND UPDATE_COUNT = ${item.updateCount}`, function (err, data) {
-            connection.release();              
+            connection.release();  
+            console.log(err);            
             if (err) return callback(err);
 
             if (data) {

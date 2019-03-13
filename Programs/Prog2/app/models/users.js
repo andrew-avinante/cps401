@@ -14,7 +14,6 @@ Users.search = function (uname, callback) {
             if (err) return callback(err);
             console.log(data);
             if (data) {
-                console.log(data.Password);
                 callback(null, new Users(data[0].Username, data[0].Password));
             } else {
                 callback(null, null);

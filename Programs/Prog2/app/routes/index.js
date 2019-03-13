@@ -170,6 +170,10 @@ router.post('/maintain', function (req, res, next){
     {
         // make sure updates haven't occured on the data user is editing
         Item.getUpdateCount(req.body.txtId, function(err, data) {
+            if(err)
+            {
+                res.redirect(`/maintain?txtId=${req.body.txtId}&error=${"Something has happened! Please refresh page or try again later."}`);
+            }
             // if no updates have occured then continue
             if(data === parseInt(req.body.txtUpdateCount))
             {
@@ -243,6 +247,15 @@ function search(req, res, pgLayout)
     {
         // cache query ID's
         Item.cacheSearch(req.query.txtTitle, function (err, data) {
+            if (err)
+            {
+                res.render(view, {
+                    error : "Something has happened! Please reoload page or try again later.", 
+                    layout : pgLayout, 
+                    login : !req.session.auth ? 'Login' : req.session.auth['loggedIn'] == 1 ? 'Logout' : 'Login'
+                });
+                return;
+            }
             pager[req.query.txtTitle] = {
                 dt : data, 
                 size : data.length, 
@@ -262,6 +275,15 @@ function search(req, res, pgLayout)
 
             // Gets paging list
             Item.page(start, pager[req.query.txtTitle].dt, function(err, data) {
+                if (err)
+                {
+                    res.render(view, {
+                        error : "Something has happened! Please reoload page or try again later.", 
+                        layout : pgLayout, 
+                        login : !req.session.auth ? 'Login' : req.session.auth['loggedIn'] == 1 ? 'Logout' : 'Login'
+                    });
+                    return;
+                }
                 // searches DB for results
                 Item.search(data, function (err, data) { 
                     // if error then report an error
@@ -300,6 +322,15 @@ function search(req, res, pgLayout)
         }
         // Gets paging list
         Item.page(start, pager[req.query.txtTitle].dt, function(err, data) {
+            if (err)
+            {
+                res.render(view, {
+                    error : err, 
+                    layout : pgLayout, 
+                    login : !req.session.auth ? 'Login' : req.session.auth['loggedIn'] == 1 ? 'Logout' : 'Login'
+                });
+                return;
+            }
             // search DB
             Item.search(data, function (err, data) { 
                 if(err)

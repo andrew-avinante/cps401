@@ -73,7 +73,7 @@ Item.update = function(item, callback)
         return;
     }
     db.pool.getConnection(function (err, connection) {
-        connection.query(`update ITEMS set CALLNO = "${item.callNo}", AUTHOR = "${item.author}", TITLE = "${item.title}", PUB_INFO = "${item.pubInfo}", DESCRIPT = "${item.descript}", SERIES = "${item.series}", ADD_AUTHOR = "${item.addAuthor}", UPDATE_COUNT = ${item.updateCount} + 1 WHERE ID = ${item.id} AND UPDATE_COUNT = ${item.updateCount}`, function (err, data) {
+        connection.query(`update items set CALLNO = "${item.callNo}", AUTHOR = "${item.author}", TITLE = "${item.title}", PUB_INFO = "${item.pubInfo}", DESCRIPT = "${item.descript}", SERIES = "${item.series}", ADD_AUTHOR = "${item.addAuthor}", UPDATE_COUNT = ${item.updateCount} + 1 WHERE ID = ${item.id} AND UPDATE_COUNT = ${item.updateCount}`, function (err, data) {
             connection.release();  
             console.log(err);            
             if (err) return callback(err);

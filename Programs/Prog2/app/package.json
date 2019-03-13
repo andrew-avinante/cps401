@@ -18,5 +18,10 @@
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0",
     "mysql": "^2.13.0"
-  }
+  },
+  "main": "./bin/www",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

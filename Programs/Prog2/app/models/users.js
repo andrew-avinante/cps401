@@ -13,7 +13,7 @@ Users.search = function (uname, callback) {
         connection.query(`select * from users where username = '${uname}'`, function (err, data) {
             connection.release();              
             if (err) return callback(err);
-            // console.log(data);
+            if (!data.length) return callback("Invalid cridentials");
             if (data) {
                 callback(null, new Users(data[0].Username, data[0].Password));
             } else {

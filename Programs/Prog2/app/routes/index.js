@@ -76,7 +76,14 @@ router.get('/login', function (req, res, next) {
 router.post('/login', function (req, res, next) {
 
     let auth = req.session.auth;    // get auth session
-
+    if(!req.body.txtUsername || !req.body.txtPassword)
+    {
+        res.render("login", {
+            layout : "main",
+            error : "Some fields are empty",
+            login : !req.session.auth ? 'Login' : req.session.auth['loggedIn'] == 1 ? 'Logout' : 'Login'
+        });
+    }
     // Search for user in user table via username
     Users.search(req.body.txtUsername, function (err, data)
     {
@@ -100,6 +107,7 @@ router.post('/login', function (req, res, next) {
         {
             res.render("login", {
                 layout : "main",
+                error : "Invalid login credentials",
                 login : !req.session.auth ? 'Login' : req.session.auth['loggedIn'] == 1 ? 'Logout' : 'Login'
             });
         }
@@ -172,7 +180,7 @@ router.post('/maintain', function (req, res, next){
         Item.getUpdateCount(req.body.txtId, function(err, data) {
             if(err)
             {
-                res.redirect(`/maintain?txtId=${req.body.txtId}&error=${"Something has happened! Please refresh page or try again later."}`);
+                res.redirect(`/maintain?txtId=${req.body.txtId}&error=${encodeURI("Something has happened! Please refresh page or try again later.")}`);
             }
             // if no updates have occured then continue
             if(data === parseInt(req.body.txtUpdateCount))

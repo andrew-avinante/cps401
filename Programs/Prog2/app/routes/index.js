@@ -127,7 +127,7 @@ router.post('/maintain', function (req, res, next){
                 {
                     if(err)
                     {
-                        res.redirect(`/maintain?error=${encodeURI(err)}`);
+                        res.redirect(`/maintain?txtId=${req.body.txtId}&error=${encodeURI(err)}`);
                     }
                     else
                     {

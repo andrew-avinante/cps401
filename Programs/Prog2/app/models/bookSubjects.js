@@ -7,6 +7,7 @@ function BookSubjects(bookId, subject) {
     this.subject = subject;
 }
 
+// search subject table
 BookSubjects.search = function (id, callback) {
     db.pool.getConnection(function (err, connection) {
         connection.query(`select * from booksubjects where bookid = ${id}`, function (err, data) {

@@ -14,6 +14,7 @@ function Item(id, callNo, author, title, pubInfo, descript, series, addAuthor, u
     this.updateCount = updateCount;
 }
 
+// gets a list of ID's that match the criteria
 Item.cacheSearch = function (ttl, callback) {
     db.pool.getConnection(function (err, connection) {
         connection.query(`select id from items where title LIKE "%${ttl}%" order by title`, function (err, data) {
@@ -29,6 +30,7 @@ Item.cacheSearch = function (ttl, callback) {
     });
 }
 
+// creates a list of ID's from the cache in batches of 10 or less
 Item.page = function (strt, lst, callback){
     let pageSize = 10;
     let data = "(";
@@ -42,7 +44,6 @@ Item.page = function (strt, lst, callback){
 }
 
 Item.search = function (lst, callback) {
-    console.log(lst);
     db.pool.getConnection(function (err, connection) {
         connection.query(`select * from items where id in ${lst} order by title limit 10`, function (err, data) {
             //console.log(data);
@@ -64,18 +65,18 @@ Item.search = function (lst, callback) {
     });
 }
 
+// Updates the table
 Item.update = function(item, callback)
 {
-    console.log(item.id);
-    if(!item.callNo || !item.title || !item.author)
+    // makes sure critical items are valid
+    if(item.callNo === "" || item.title === "" || item.author === "")
     {
         callback(`${!item.id ? "Call number" : !item.title ? "Title" : "Author"} is NULL!`, null);
         return;
     }
     db.pool.getConnection(function (err, connection) {
         connection.query(`update items set CALLNO = "${item.callNo}", AUTHOR = "${item.author}", TITLE = "${item.title}", PUB_INFO = "${item.pubInfo}", DESCRIPT = "${item.descript}", SERIES = "${item.series}", ADD_AUTHOR = "${item.addAuthor}", UPDATE_COUNT = ${item.updateCount} + 1 WHERE ID = ${item.id} AND UPDATE_COUNT = ${item.updateCount}`, function (err, data) {
-            connection.release();  
-            console.log(err);            
+            connection.release();              
             if (err) return callback(err);
 
             if (data) {
@@ -87,6 +88,7 @@ Item.update = function(item, callback)
     });
 }
 
+// returns update count for concurrency purposes
 Item.getUpdateCount = function(id, callback)
 {
     db.pool.getConnection(function (err, connection) {
